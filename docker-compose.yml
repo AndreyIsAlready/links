@@ -1,0 +1,24 @@
+version: '3.8'
+services:
+  app:
+    container_name: onetime-link-app
+    build: .
+    ports:
+      - "3000:3000"
+    env_file:
+      - .env
+    depends_on:
+      - mongo
+    restart: on-failure
+
+  mongo:
+    container_name: onetime-link-mongo
+    image: mongo:latest
+    ports:
+      - "27018:27018"
+    volumes:
+      - mongo-data:/data/db
+    restart: always
+
+volumes:
+  mongo-data:
