@@ -7,11 +7,6 @@ export class LinksService {
 	constructor(private readonly linksRepository: LinkRepository) {}
 	
 	async createLink(value: string): Promise<string> {
-		const isExist = await this.linksRepository.existLinkByValue(value);
-		if (isExist) {
-			throw new HttpException( 'Link is already exist', 400);
-		}
-		
 		const link = await this.linksRepository.createLink(value);
 		return `${process.env.DOMAIN}/links/${link._id}`;
 	}

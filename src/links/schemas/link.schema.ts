@@ -8,7 +8,7 @@ export class Link {
 	@Prop({ type: Types.ObjectId, default: new Types.ObjectId() })
 	_id: Types.ObjectId;
 	
-	@Prop({ required: true, unique: true })
+	@Prop({ required: true })
 	value: string;
 	
 	@Prop({ default: true })
